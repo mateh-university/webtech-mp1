@@ -1,6 +1,6 @@
 const Student = require('./student.model')
 module.exports = {
-    get : (req, res)=>{
+    get : async (req, res)=>{
         res.json(await Student.find())
     },
     post : (req, res)=>{
@@ -10,12 +10,12 @@ module.exports = {
     },
     put : (req, res)=>{
         const { id } = req.body
-        Student.updateOne({id}, req.body)
+        Student.updateOne({_id : id}, req.body)
         .then(info=>res.json(info))
     },
     delete : (req, res)=>{
         const { id } = req.body
-        Student.deleteOne({id})
+        Student.deleteOne({_id: id})
         .then(info=>res.json(info))
     }
 }

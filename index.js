@@ -5,6 +5,7 @@ const enroute  = require('./student.route')
 const app = express()
 
 // middlewares
+app.use(express.urlencoded({extended: false}))
 app.use(express.json())
 
 // routes
